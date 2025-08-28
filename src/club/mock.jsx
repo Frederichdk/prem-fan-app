@@ -56,12 +56,12 @@ export const mockNews = [
     title: "Forest clinch home win at The City Ground",
     source: "BBC Sport",
     publishedAt: "2025-08-26T10:05:00Z",
-    url: "#",
+    url: "123",
   },
   {
     title: "Injury update ahead of Newcastle clash",
     source: "Sky Sports",
     publishedAt: "2025-08-25T14:00:00Z",
-    url: "#",
+    url: "321",
   },
 ];

@@ -1,10 +1,10 @@
 const ClubNews = ({ news = [] }) => {
   return (
     <div className="h-[50%] w-full bg-f-white rounded-2xl shadow-xl p-6">
-      <h2 className="mb-8 text-4xl font-bold text-f-jet">Latest News</h2>
+      <h2 className="mb-6 text-4xl font-bold text-f-jet">Latest News</h2>
       <div className="flex flex-col gap-6">
         {news.map((e) => (
-          <div className="bg-[#e7e7e7] rounded-2xl">
+          <div key={e.url} className="bg-[#e7e7e7] rounded-2xl">
             <div className="flex flex-row justify-between p-5">
               <div>
                 <p className="text-2xl font-bold">{e.title}</p>

@@ -7,21 +7,24 @@ const ClubGames = ({ nextMatch = null, recentResults = [] }) => {
       </div>
       <div className="flex flex-row gap-8 h-full">
         <div className="h-full flex-1 bg-f-red rounded-2xl p-4 flex flex-col justify-between">
-          <p class="text-xl font-medium tracking-wide text-red-100 uppercase">
+          <p className="text-xl font-medium tracking-wide text-red-100 uppercase">
             {nextMatch.competition}
           </p>
           <div>
-            <p class="text-3xl font-semibold text-f-white">
+            <p className="text-3xl font-semibold text-f-white">
               {nextMatch.opponent}
             </p>
-            <p class="text-xl text-red-100">
+            <p className="text-xl text-red-100">
               {nextMatch.kickoffDate} · {nextMatch.kickoffTime}
             </p>
           </div>
-          <p class="text-xl text-red-200">{nextMatch.venue}</p>
+          <p className="text-xl text-red-200">{nextMatch.venue}</p>
         </div>
         {recentResults.map((e) => (
-          <div className="h-full flex-1 bg-[#e7e7e7] rounded-2xl p-4 flex flex-col justify-between shadow-lg">
+          <div
+            key={e.date}
+            className="h-full flex-1 bg-[#e7e7e7] rounded-2xl p-4 flex flex-col justify-between shadow-lg"
+          >
             <div className="flex flex-row justify-between">
               <p className="text-2xl font-bold ">{e.result}</p>
               <p className="text-2xl font-semibold">{e.score}</p>
