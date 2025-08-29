@@ -1,3 +1,5 @@
+import { getClubNews } from "./api/getClubNews";
+import { getCulbStats } from "./api/getClubStats";
 import "./App.css";
 import {
   mockClub,
@@ -10,8 +12,32 @@ import ClubGames from "./components/ClubGames";
 import ClubHeader from "./components/ClubHeader";
 import ClubNews from "./components/ClubNews";
 import ClubStats from "./components/ClubStats";
+import { useEffect, useRef, useState } from "react";
 
 function App() {
+  const [stats, setStats] = useState(null);
+  const [news, setNews] = useState(null);
+  const fetched = useRef(false);
+
+  useEffect(() => {
+    if (fetched.current) return;
+    fetched.current = true;
+
+    async function fetchStats() {
+      const data = await getCulbStats("Nottingham Forest FC");
+      setStats(data);
+    }
+    fetchStats();
+  }, []);
+
+  useEffect(() => {
+    async function fetchNews() {
+      const data = await getClubNews("Nottingham Forest");
+      setNews(data);
+    }
+    fetchNews();
+  }, []);
+
   return (
     <>
       <div className="h-full w-full flex flex-col gap-10">
@@ -21,20 +47,24 @@ function App() {
           primary={mockClub.colors.primary}
         />
         <div className="w-full h-[70%] flex flex-row gap-10">
-          <ClubStats
-            played={mockStats.played}
-            wins={mockStats.wins}
-            losses={mockStats.losses}
-            draws={mockStats.draws}
-            points={mockStats.points}
-            position={mockStats.position}
-          />
+          {stats ? (
+            <ClubStats
+              played={stats.played}
+              wins={stats.wins}
+              losses={stats.losses}
+              draws={stats.draws}
+              points={stats.points}
+              position={stats.position}
+            />
+          ) : (
+            <div>LOADING...</div>
+          )}
           <div className="w-full h-full flex flex-col gap-10">
             <ClubGames
               nextMatch={mockNextMatch}
               recentResults={mockRecentResults}
             />
-            <ClubNews news={mockNews} />
+            {news ? <ClubNews news={news} /> : <div>LOADING...</div>}
           </div>
         </div>
       </div>

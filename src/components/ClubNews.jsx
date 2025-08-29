@@ -4,7 +4,13 @@ const ClubNews = ({ news = [] }) => {
       <h2 className="mb-6 text-4xl font-bold text-f-jet">Latest News</h2>
       <div className="flex flex-col gap-6">
         {news.map((e) => (
-          <div key={e.url} className="bg-[#e7e7e7] rounded-2xl">
+          <a
+            key={e.url}
+            href={e.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-[#e7e7e7] rounded-2xl hover:shadow-xl hover:-translate-y-1 hover:scale-[1.01] transition-transform duration-200"
+          >
             <div className="flex flex-row justify-between p-5">
               <div>
                 <p className="text-2xl font-bold">{e.title}</p>
@@ -29,7 +35,7 @@ const ClubNews = ({ news = [] }) => {
                 </svg>
               </div>
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </div>
