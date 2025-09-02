@@ -1,13 +1,8 @@
 import { getClubNews } from "./api/getClubNews";
 import { getCulbStats } from "./api/getClubStats";
+import { getClubGames } from "./api/getClubGames";
 import "./App.css";
-import {
-  mockClub,
-  mockNews,
-  mockNextMatch,
-  mockRecentResults,
-  mockStats,
-} from "./club/mock";
+import { mockClub, mockRecentResults } from "./club/mock";
 import ClubGames from "./components/ClubGames";
 import ClubHeader from "./components/ClubHeader";
 import ClubNews from "./components/ClubNews";
@@ -17,6 +12,7 @@ import { useEffect, useRef, useState } from "react";
 function App() {
   const [stats, setStats] = useState(null);
   const [news, setNews] = useState(null);
+  const [game, setGame] = useState(null);
   const fetched = useRef(false);
 
   useEffect(() => {
@@ -36,6 +32,14 @@ function App() {
       setNews(data);
     }
     fetchNews();
+  }, []);
+
+  useEffect(() => {
+    async function fetchGames() {
+      const data = await getClubGames(351);
+      setGame(data);
+    }
+    fetchGames();
   }, []);
 
   return (
@@ -60,10 +64,15 @@ function App() {
             <div>LOADING...</div>
           )}
           <div className="w-full h-full flex flex-col gap-10">
-            <ClubGames
-              nextMatch={mockNextMatch}
-              recentResults={mockRecentResults}
-            />
+            {game ? (
+              <ClubGames
+                nextMatch={game.nextMatch}
+                recentResults={game.recentResults}
+              />
+            ) : (
+              <div>LOADING...</div>
+            )}
+
             {news ? <ClubNews news={news} /> : <div>LOADING...</div>}
           </div>
         </div>

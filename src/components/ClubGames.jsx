@@ -15,7 +15,7 @@ const ClubGames = ({ nextMatch = null, recentResults = [] }) => {
               {nextMatch.opponent}
             </p>
             <p className="text-xl text-red-100">
-              {nextMatch.kickoffDate} · {nextMatch.kickoffTime}
+              {nextMatch.date} · {nextMatch.time}
             </p>
           </div>
           <p className="text-xl text-red-200">{nextMatch.venue}</p>

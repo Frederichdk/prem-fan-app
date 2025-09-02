@@ -7,18 +7,9 @@ export const mockClub = {
   colors: { primary: "#DD0000", secondary: "#FFFFFF" },
 };
 
-export const mockStats = {
-  played: 3,
-  wins: 1,
-  draws: 1,
-  losses: 1,
-  points: 4,
-  position: 5,
-};
-
 export const mockNextMatch = {
-  kickoffDate: "Aug 27",
-  kickoffTime: "5:00 pm",
+  date: "Aug 27",
+  time: "5:00 pm",
   opponent: "Newcastle United",
   venue: "The City Ground",
   competition: "Premier League",
@@ -48,20 +39,5 @@ export const mockRecentResults = [
     score: "1-1",
     result: "D",
     competition: "PL",
-  },
-];
-
-export const mockNews = [
-  {
-    title: "Forest clinch home win at The City Ground",
-    source: "BBC Sport",
-    publishedAt: "2025-08-26T10:05:00Z",
-    url: "123",
-  },
-  {
-    title: "Injury update ahead of Newcastle clash",
-    source: "Sky Sports",
-    publishedAt: "2025-08-25T14:00:00Z",
-    url: "321",
   },
 ];
