@@ -1,4 +1,4 @@
-const ClubHeader = ({ teamInfo: { name, crest, colors } }) => {
+const ClubHeader = ({ teamInfo: { name, crest } }) => {
   return (
     <div className="w-full bg-f-white p-3 rounded-2xl shadow-lg">
       <div className="border-[3px] border-f-isabelline rounded-xl p-7">

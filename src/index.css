@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --color-f-red: #DD0000;
+  --color-primary: #DD0000;
+  --color-textcol: #FFFFFF;
   --color-f-white: #FFFFFF;
   --color-f-jet: #363537;
   --color-f-isabelline: #F1EBE4;

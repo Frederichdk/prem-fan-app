@@ -55,6 +55,7 @@ function App() {
               draws={stats.draws}
               points={stats.points}
               position={stats.position}
+              id={TEAMS[351]}
             />
           ) : (
             <div>LOADING...</div>

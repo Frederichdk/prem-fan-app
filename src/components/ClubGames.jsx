@@ -6,19 +6,19 @@ const ClubGames = ({ nextMatch = null, recentResults = [] }) => {
         <h2 className="text-4xl text-f-jet font-bold ">Recent Results</h2>
       </div>
       <div className="flex flex-row gap-8 h-full">
-        <div className="h-full flex-1 bg-f-red rounded-2xl p-4 flex flex-col justify-between">
-          <p className="text-xl font-medium tracking-wide text-red-100 uppercase">
+        <div className="h-full flex-1 bg-primary rounded-2xl p-4 flex flex-col justify-between">
+          <p className="text-xl font-medium tracking-wide text-textcol/85 uppercase">
             {nextMatch.competition}
           </p>
           <div>
-            <p className="text-3xl font-semibold text-f-white">
+            <p className="text-3xl font-semibold text-textcol">
               {nextMatch.opponent}
             </p>
-            <p className="text-xl text-red-100">
+            <p className="text-xl text-textcol/85">
               {nextMatch.date} · {nextMatch.time}
             </p>
           </div>
-          <p className="text-xl text-red-200">{nextMatch.venue}</p>
+          <p className="text-xl text-textcol/70">{nextMatch.venue}</p>
         </div>
         {recentResults.map((e) => (
           <div
