@@ -1,9 +1,11 @@
-export async function getClubNews(teamName) {
-  const serachTeamName = teamName.trim().toLowerCase().replace(/\s+/g, "");
+import { TEAMS } from "../data/teams";
+
+export async function getClubNews(teamID) {
+  const guardianTagId = TEAMS[teamID].guardianTagId;
   const res = await fetch(
-    `https://content.guardianapis.com/search?tag=football%2F${serachTeamName}&order-by=newest&page-size=2&api-key=${
-      import.meta.env.VITE_TG_KEY
-    }`
+    `https://content.guardianapis.com/search?tag=${encodeURIComponent(
+      guardianTagId
+    )}&order-by=newest&page-size=2&api-key=${import.meta.env.VITE_TG_KEY}`
   );
 
   const data = await res.json();

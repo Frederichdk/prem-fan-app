@@ -1,8 +1,8 @@
 import { getClubNews } from "./api/getClubNews";
 import { getCulbStats } from "./api/getClubStats";
 import { getClubGames } from "./api/getClubGames";
+import { TEAMS } from "./data/teams";
 import "./App.css";
-import { mockClub, mockRecentResults } from "./club/mock";
 import ClubGames from "./components/ClubGames";
 import ClubHeader from "./components/ClubHeader";
 import ClubNews from "./components/ClubNews";
@@ -20,7 +20,7 @@ function App() {
     fetched.current = true;
 
     async function fetchStats() {
-      const data = await getCulbStats("Nottingham Forest FC");
+      const data = await getCulbStats(351);
       setStats(data);
     }
     fetchStats();
@@ -28,7 +28,7 @@ function App() {
 
   useEffect(() => {
     async function fetchNews() {
-      const data = await getClubNews("Nottingham Forest");
+      const data = await getClubNews(351);
       setNews(data);
     }
     fetchNews();
@@ -45,11 +45,7 @@ function App() {
   return (
     <>
       <div className="h-full w-full flex flex-col gap-10">
-        <ClubHeader
-          name={mockClub.name}
-          crest={mockClub.crest}
-          primary={mockClub.colors.primary}
-        />
+        <ClubHeader teamInfo={TEAMS[351]} />
         <div className="w-full h-[70%] flex flex-row gap-10">
           {stats ? (
             <ClubStats

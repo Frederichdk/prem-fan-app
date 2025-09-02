@@ -1,11 +1,11 @@
-export async function getCulbStats(teamName) {
+export async function getCulbStats(teamID) {
   const result = await fetch("/api-football/v4/competitions/PL/standings", {
     headers: { "X-Auth-Token": import.meta.env.VITE_FD_KEY },
   });
   const data = await result.json();
 
   const total = data.standings.find((s) => s.type === "TOTAL");
-  const row = total.table.find((r) => r.team.name === teamName);
+  const row = total.table.find((r) => r.team.id === teamID);
 
   return {
     position: row.position,
