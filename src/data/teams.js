@@ -53,6 +53,16 @@ export const TEAMS = {
     guardianTagId: "football/everton",
     colors: { primary: "#003399", secondary: "#FFFFFF", text: "#FFFFFF" }, // blue
   },
+  71: {
+    id: 71,
+    name: "Sunderland AFC",
+    shortName: "Sunderland",
+    tla: "SUN",
+    crest: "https://crests.football-data.org/71.png",
+    guardianTagId: "football/sunderland",
+    colors: { primary: "#E2231A", secondary: "#FFFFFF", text: "#000000" }, // red & white stripes
+  },
+
   1044: {
     id: 1044,
     name: "AFC Bournemouth",
@@ -86,7 +96,7 @@ export const TEAMS = {
     shortName: "Brighton",
     tla: "BHA",
     crest: "https://crests.football-data.org/397.png",
-    guardianTagId: "football/brighton-and-hove-albion",
+    guardianTagId: "football/brightonfootball",
     colors: { primary: "#0057B8", secondary: "#FFFFFF", text: "#FFFFFF" }, // blue
   },
   341: {
@@ -95,7 +105,7 @@ export const TEAMS = {
     shortName: "Leeds",
     tla: "LEE",
     crest: "https://crests.football-data.org/341.png",
-    guardianTagId: "football/leeds-united",
+    guardianTagId: "football/leedsunited",
     colors: { primary: "#FFCD00", secondary: "#1D428A", text: "#363537" }, // yellow
   },
   65: {
@@ -131,7 +141,7 @@ export const TEAMS = {
     shortName: "West Ham",
     tla: "WHU",
     crest: "https://crests.football-data.org/563.png",
-    guardianTagId: "football/west-ham-united",
+    guardianTagId: "football/westhamunited",
     colors: { primary: "#7A263A", secondary: "#1BB1E7", text: "#FFFFFF" }, // claret
   },
   67: {
