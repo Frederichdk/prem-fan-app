@@ -1,9 +1,9 @@
-const TeamTable = ({ rows = [] }) => {
+const TeamTable = ({ rows = [], hoverTeam = null }) => {
   const top3 = rows.slice(0, 3);
+  const rest = rows.slice(3);
   const first = top3[0];
   const second = top3[1];
   const third = top3[2];
-  const rest = rows.slice(3);
   return (
     <div className=" flex flex-col justify-center items-center gap-6 pt-10 pb-5 rounded-xl  w-[40%] h-full">
       {/*Becoming to messy, podium Wrapper starts here*/}
@@ -80,6 +80,12 @@ const TeamTable = ({ rows = [] }) => {
             {rest.map((t) => (
               <tr
                 key={t.team.id}
+                style={
+                  hoverTeam
+                    ? { "--color-PrimaryColor": hoverTeam.primaryColor }
+                    : {}
+                  // This is the last thing I have done Today, the color and ID is not in the comp need to use it still
+                }
                 className="hover:bg-gray-50 h-[calc(100%/20)]"
               >
                 <td className="text-center px-3 py-1 font-semibold">

@@ -7,6 +7,7 @@ import { getStandings } from "../api/getStandings";
 export default function TeamsPage() {
   const navigate = useNavigate();
   const [row, setRow] = useState(null);
+  const [hoverTeam, setHoverTeam] = useState(null);
 
   useEffect(() => {
     async function fetchStandings() {
@@ -19,8 +20,15 @@ export default function TeamsPage() {
   return (
     <>
       <div className="flex flex-row h-full w-full justify-center items-center gap-24 ">
-        {row ? <TeamTable rows={row} /> : <div>Loading...</div>}
-        <TeamCards onSelect={(id) => navigate(`/club/${id}`)} />
+        {row ? (
+          <TeamTable rows={row} hoverTeam={hoverTeam} />
+        ) : (
+          <div>Loading...</div>
+        )}
+        <TeamCards
+          onSelect={(id) => navigate(`/club/${id}`)}
+          onHover={setHoverTeam}
+        />
       </div>
     </>
   );

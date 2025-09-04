@@ -10,6 +10,10 @@ const TeamCards = ({ onSelect }) => {
           <button
             key={t.id}
             onClick={() => onSelect(t.id)}
+            onMouseEnter={() =>
+              onHover({ id: t.id, primaryColor: t.colors.primary })
+            }
+            onMouseLeave={() => onHover(null)}
             style={{ "--shadow-color": t.colors.primary }}
             className="flex justify-center items-center p-4 bg-white rounded-xl shadow transition-transform duration-200
                      hover:-translate-y-1 hover:scale-[1.01]
