@@ -6,7 +6,7 @@ export const TEAMS = {
     tla: "NOT",
     crest: "https://crests.football-data.org/351.png",
     guardianTagId: "football/nottinghamforest",
-    colors: { primary: "#DD0000", secondary: "#FFFFFF", text: "#FFFFFF" }, // red
+    colors: { primary: "#DD0000", secondary: "#FFFFFF", text: "#FFFFFF" },
   },
   64: {
     id: 64,
@@ -15,7 +15,7 @@ export const TEAMS = {
     tla: "LIV",
     crest: "https://crests.football-data.org/64.png",
     guardianTagId: "football/liverpool",
-    colors: { primary: "#C8102E", secondary: "#00B2A9", text: "#FFFFFF" }, // red
+    colors: { primary: "#C8102E", secondary: "#00B2A9", text: "#FFFFFF" },
   },
   61: {
     id: 61,
@@ -24,7 +24,7 @@ export const TEAMS = {
     tla: "CHE",
     crest: "https://crests.football-data.org/61.png",
     guardianTagId: "football/chelsea",
-    colors: { primary: "#034694", secondary: "#FFFFFF", text: "#FFFFFF" }, // blue
+    colors: { primary: "#034694", secondary: "#FFFFFF", text: "#FFFFFF" },
   },
   57: {
     id: 57,
@@ -33,7 +33,7 @@ export const TEAMS = {
     tla: "ARS",
     crest: "https://crests.football-data.org/57.png",
     guardianTagId: "football/arsenal",
-    colors: { primary: "#EF0107", secondary: "#063672", text: "#FFFFFF" }, // red
+    colors: { primary: "#EF0107", secondary: "#063672", text: "#FFFFFF" },
   },
   73: {
     id: 73,
@@ -42,7 +42,7 @@ export const TEAMS = {
     tla: "TOT",
     crest: "https://crests.football-data.org/73.png",
     guardianTagId: "football/tottenham-hotspur",
-    colors: { primary: "#132257", secondary: "#FFFFFF", text: "#FFFFFF" }, // navy
+    colors: { primary: "#132257", secondary: "#FFFFFF", text: "#FFFFFF" },
   },
   62: {
     id: 62,
@@ -51,7 +51,7 @@ export const TEAMS = {
     tla: "EVE",
     crest: "https://crests.football-data.org/62.png",
     guardianTagId: "football/everton",
-    colors: { primary: "#003399", secondary: "#FFFFFF", text: "#FFFFFF" }, // blue
+    colors: { primary: "#003399", secondary: "#FFFFFF", text: "#FFFFFF" },
   },
   71: {
     id: 71,
@@ -60,7 +60,7 @@ export const TEAMS = {
     tla: "SUN",
     crest: "https://crests.football-data.org/71.png",
     guardianTagId: "football/sunderland",
-    colors: { primary: "#E2231A", secondary: "#FFFFFF", text: "#000000" }, // red & white stripes
+    colors: { primary: "#E2231A", secondary: "#FFFFFF", text: "#000000" },
   },
 
   1044: {
@@ -70,7 +70,7 @@ export const TEAMS = {
     tla: "BOU",
     crest: "https://crests.football-data.org/bournemouth.png",
     guardianTagId: "football/bournemouth",
-    colors: { primary: "#DA291C", secondary: "#000000", text: "#FFFFFF" }, // red
+    colors: { primary: "#DA291C", secondary: "#000000", text: "#FFFFFF" },
   },
   354: {
     id: 354,
@@ -79,7 +79,7 @@ export const TEAMS = {
     tla: "CRY",
     crest: "https://crests.football-data.org/354.png",
     guardianTagId: "football/crystalpalace",
-    colors: { primary: "#1B458F", secondary: "#C4122E", text: "#FFFFFF" }, // blue
+    colors: { primary: "#1B458F", secondary: "#C4122E", text: "#FFFFFF" },
   },
   66: {
     id: 66,
@@ -88,7 +88,7 @@ export const TEAMS = {
     tla: "MUN",
     crest: "https://crests.football-data.org/66.png",
     guardianTagId: "football/manchester-united",
-    colors: { primary: "#DA291C", secondary: "#FFD500", text: "#FFFFFF" }, // red
+    colors: { primary: "#DA291C", secondary: "#FFD500", text: "#FFFFFF" },
   },
   397: {
     id: 397,
@@ -97,7 +97,7 @@ export const TEAMS = {
     tla: "BHA",
     crest: "https://crests.football-data.org/397.png",
     guardianTagId: "football/brightonfootball",
-    colors: { primary: "#0057B8", secondary: "#FFFFFF", text: "#FFFFFF" }, // blue
+    colors: { primary: "#0057B8", secondary: "#FFFFFF", text: "#FFFFFF" },
   },
   341: {
     id: 341,
@@ -106,7 +106,7 @@ export const TEAMS = {
     tla: "LEE",
     crest: "https://crests.football-data.org/341.png",
     guardianTagId: "football/leedsunited",
-    colors: { primary: "#FFCD00", secondary: "#1D428A", text: "#363537" }, // yellow
+    colors: { primary: "#FFCD00", secondary: "#1D428A", text: "#363537" },
   },
   65: {
     id: 65,
@@ -115,7 +115,7 @@ export const TEAMS = {
     tla: "MCI",
     crest: "https://crests.football-data.org/65.png",
     guardianTagId: "football/manchestercity",
-    colors: { primary: "#6CABDD", secondary: "#1C2C5B", text: "#363537" }, // sky blue
+    colors: { primary: "#6CABDD", secondary: "#1C2C5B", text: "#363537" },
   },
   328: {
     id: 328,
@@ -124,7 +124,7 @@ export const TEAMS = {
     tla: "BUR",
     crest: "https://crests.football-data.org/328.png",
     guardianTagId: "football/burnley",
-    colors: { primary: "#6C1D45", secondary: "#99D6EA", text: "#FFFFFF" }, // claret
+    colors: { primary: "#6C1D45", secondary: "#99D6EA", text: "#FFFFFF" },
   },
   402: {
     id: 402,
@@ -133,7 +133,7 @@ export const TEAMS = {
     tla: "BRE",
     crest: "https://crests.football-data.org/402.png",
     guardianTagId: "football/brentford",
-    colors: { primary: "#E30613", secondary: "#000000", text: "#FFFFFF" }, // red
+    colors: { primary: "#E30613", secondary: "#000000", text: "#FFFFFF" },
   },
   563: {
     id: 563,
@@ -142,7 +142,7 @@ export const TEAMS = {
     tla: "WHU",
     crest: "https://crests.football-data.org/563.png",
     guardianTagId: "football/westhamunited",
-    colors: { primary: "#7A263A", secondary: "#1BB1E7", text: "#FFFFFF" }, // claret
+    colors: { primary: "#7A263A", secondary: "#1BB1E7", text: "#FFFFFF" },
   },
   67: {
     id: 67,
@@ -151,7 +151,7 @@ export const TEAMS = {
     tla: "NEW",
     crest: "https://crests.football-data.org/67.png",
     guardianTagId: "football/newcastleunited",
-    colors: { primary: "#241F20", secondary: "#FFFFFF", text: "#FFFFFF" }, // black
+    colors: { primary: "#241F20", secondary: "#FFFFFF", text: "#FFFFFF" },
   },
   63: {
     id: 63,
@@ -160,7 +160,7 @@ export const TEAMS = {
     tla: "FUL",
     crest: "https://crests.football-data.org/63.png",
     guardianTagId: "football/fulham",
-    colors: { primary: "#000000", secondary: "#FFFFFF", text: "#FFFFFF" }, // black
+    colors: { primary: "#000000", secondary: "#FFFFFF", text: "#FFFFFF" },
   },
   58: {
     id: 58,
@@ -169,7 +169,7 @@ export const TEAMS = {
     tla: "AVL",
     crest: "https://crests.football-data.org/58.png",
     guardianTagId: "football/aston-villa",
-    colors: { primary: "#95BFE5", secondary: "#670E36", text: "#363537" }, // light blue
+    colors: { primary: "#95BFE5", secondary: "#670E36", text: "#363537" },
   },
   76: {
     id: 76,
@@ -178,6 +178,6 @@ export const TEAMS = {
     tla: "WOL",
     crest: "https://crests.football-data.org/76.png",
     guardianTagId: "football/wolves",
-    colors: { primary: "#FDB913", secondary: "#000000", text: "#363537" }, // gold
+    colors: { primary: "#FDB913", secondary: "#000000", text: "#363537" },
   },
 };

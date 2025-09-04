@@ -18,7 +18,7 @@ export default function TeamsPage() {
 
   return (
     <>
-      <div className="flex flex-row h-full w-full justify-center gap-24 py-12">
+      <div className="flex flex-row h-full w-full justify-center items-center gap-24 ">
         {row ? <TeamTable rows={row} /> : <div>Loading...</div>}
         <TeamCards onSelect={(id) => navigate(`/club/${id}`)} />
       </div>

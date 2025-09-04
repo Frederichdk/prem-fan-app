@@ -5,7 +5,7 @@ const TeamTable = ({ rows = [] }) => {
   const third = top3[2];
   const rest = rows.slice(3);
   return (
-    <div className=" flex flex-col  gap-2 pt-5 rounded-xl  w-[40%] h-full">
+    <div className=" flex flex-col justify-center items-center gap-6 pt-10 pb-5 rounded-xl  w-[40%] h-full">
       {/*Becoming to messy, podium Wrapper starts here*/}
       <div className="flex justify-center items-end h-fit w-full">
         {/* Silver podium starts here */}
@@ -67,34 +67,38 @@ const TeamTable = ({ rows = [] }) => {
         </div>
       </div>
       {/*Rest of the teams*/}
-      <table>
-        <thead>
-          <th>#</th>
-          <th className="flex pl-4">Team</th>
-          <th>Pts</th>
-        </thead>
-        <tbody>
-          {rest.map((t) => (
-            <tr
-              key={t.team.id}
-              className="border-b border-gray-100 hover:bg-gray-50"
-            >
-              <td className="text-center px-3 py-1 font-semibold">
-                {t.position}
-              </td>
-              <td className="px-3 py-1 flex items-center gap-2">
-                <img
-                  src={t.team.crest}
-                  alt={t.team.shortName}
-                  className="h-6 w-6"
-                />
-                {t.team.shortName}
-              </td>
-              <td className="px-3 py-1 text-center">{t.points}</td>
+      <div className="overflow-hidden w-[80%] h-full rounded-2xl ring-gray-300 ring-1 bg-white">
+        <table className="w-full h-full table-fixed ">
+          <thead className="h-10 border-b-1 border-gray-300">
+            <tr>
+              <th className="w-[25%]">#</th>
+              <th className="text-left pl-4">Team</th>
+              <th>Pts</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody className="divide-y divide-gray-100">
+            {rest.map((t) => (
+              <tr
+                key={t.team.id}
+                className="hover:bg-gray-50 h-[calc(100%/20)]"
+              >
+                <td className="text-center px-3 py-1 font-semibold">
+                  {t.position}
+                </td>
+                <td className="px-3 py-1 flex items-center gap-2">
+                  <img
+                    src={t.team.crest}
+                    alt={t.team.shortName}
+                    className="h-6 w-6"
+                  />
+                  {t.team.shortName}
+                </td>
+                <td className="px-3 py-1 text-center">{t.points}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

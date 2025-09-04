@@ -1,12 +1,4 @@
-const ClubStats = ({
-  wins,
-  losses,
-  draws,
-  points,
-  position,
-  played,
-  teamInfo,
-}) => {
+const ClubStats = ({ wins, losses, draws, points, position, played }) => {
   const stats = [
     { label: "Position", value: position },
     { label: "Played", value: played },
@@ -15,11 +7,6 @@ const ClubStats = ({
     { label: "Losses", value: losses },
     { label: "Points", value: points },
   ];
-  const colors = teamInfo?.colors ?? { primary: "#ccc", text: "#000" };
-
-  const primary = colors.primary;
-  const secondary = colors.secondary;
-  const text = colors.text;
 
   return (
     <div className="h-full w-[40%] rounded-2xl bg-primary p-6 shadow-xl">
@@ -28,7 +15,7 @@ const ClubStats = ({
         {stats.map((e) => (
           <div
             key={e.label}
-            className="flex justify-between rounded-lg bg-white/20 py-4 px-14"
+            className="flex h-full justify-between rounded-lg bg-white/20 py-4 px-14"
           >
             <p className="text-2xl text-textcol">{e.label}</p>
             <p className="text-2xl text-textcol">{e.value}</p>
