@@ -20,7 +20,6 @@ export default function TeamsPage() {
     <>
       <div className="flex flex-row h-full w-full justify-center gap-24 py-12">
         {row ? <TeamTable rows={row} /> : <div>Loading...</div>}
-
         <TeamCards onSelect={(id) => navigate(`/club/${id}`)} />
       </div>
     </>
