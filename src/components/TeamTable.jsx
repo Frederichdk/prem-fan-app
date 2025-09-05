@@ -42,8 +42,8 @@ const TeamTable = ({ rows = [], hoverTeam = null }) => {
                 alt="Crest"
                 style={
                   hoverTeam && hoverTeam.teamID === first.team.id
-                    ? { transform: "scale(1.2)", transition: "transform 0.8ss" }
-                    : { transition: "transform 0.8ss" }
+                    ? { transform: "scale(1.2)", transition: "transform 0.8s" }
+                    : { transition: "transform 0.8s" }
                 }
                 className="h-full w-full object-cover drop-shadow-lg"
               />
