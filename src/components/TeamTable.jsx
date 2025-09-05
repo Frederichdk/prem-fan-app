@@ -4,6 +4,7 @@ const TeamTable = ({ rows = [], hoverTeam = null }) => {
   const first = top3[0];
   const second = top3[1];
   const third = top3[2];
+
   return (
     <div className=" flex flex-col justify-center items-center gap-6 pt-10 pb-5 rounded-xl  w-[40%] h-full">
       {/*Becoming to messy, podium Wrapper starts here*/}
@@ -15,6 +16,11 @@ const TeamTable = ({ rows = [], hoverTeam = null }) => {
               <img
                 src={second.team.crest}
                 alt="Crest"
+                style={
+                  hoverTeam && hoverTeam.teamID === second.team.id
+                    ? { transform: "scale(1.2)", transition: "transform 0.8s" }
+                    : { transition: "transform 0.8ss" }
+                }
                 className="h-full w-full object-cover drop-shadow-lg"
               />
             </div>
@@ -34,6 +40,11 @@ const TeamTable = ({ rows = [], hoverTeam = null }) => {
               <img
                 src={first.team.crest}
                 alt="Crest"
+                style={
+                  hoverTeam && hoverTeam.teamID === first.team.id
+                    ? { transform: "scale(1.2)", transition: "transform 0.8ss" }
+                    : { transition: "transform 0.8ss" }
+                }
                 className="h-full w-full object-cover drop-shadow-lg"
               />
             </div>
@@ -53,6 +64,11 @@ const TeamTable = ({ rows = [], hoverTeam = null }) => {
               <img
                 src={third.team.crest}
                 alt="Crest"
+                style={
+                  hoverTeam && hoverTeam.teamID === third.team.id
+                    ? { transform: "scale(1.2)", transition: "transform 0.8s" }
+                    : { transition: "transform 0.8ss" }
+                }
                 className="h-full w-full object-cover drop-shadow-lg"
               />
             </div>
@@ -77,31 +93,39 @@ const TeamTable = ({ rows = [], hoverTeam = null }) => {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
-            {rest.map((t) => (
-              <tr
-                key={t.team.id}
-                style={
-                  hoverTeam
-                    ? { "--color-PrimaryColor": hoverTeam.primaryColor }
-                    : {}
-                  // This is the last thing I have done Today, the color and ID is not in the comp need to use it still
-                }
-                className="hover:bg-gray-50 h-[calc(100%/20)]"
-              >
-                <td className="text-center px-3 py-1 font-semibold">
-                  {t.position}
-                </td>
-                <td className="px-3 py-1 flex items-center gap-2">
-                  <img
-                    src={t.team.crest}
-                    alt={t.team.shortName}
-                    className="h-6 w-6"
-                  />
-                  {t.team.shortName}
-                </td>
-                <td className="px-3 py-1 text-center">{t.points}</td>
-              </tr>
-            ))}
+            {rest.map((t) => {
+              const isActive = hoverTeam
+                ? hoverTeam.teamID === t.team.id
+                : false;
+              return (
+                <tr
+                  key={t.team.id}
+                  style={
+                    isActive
+                      ? {
+                          backgroundColor: `${hoverTeam.primaryColor}22`,
+                          outline: `2px solid ${hoverTeam.primaryColor}`,
+                        }
+                      : {}
+                    // This is the last thing I have done Today, the color and ID is not in the comp need to use it still
+                  }
+                  className="hover:bg-gray-50 h-[calc(100%/20)]"
+                >
+                  <td className="text-center px-3 py-1 font-semibold">
+                    {t.position}
+                  </td>
+                  <td className="px-3 py-1 flex items-center gap-2">
+                    <img
+                      src={t.team.crest}
+                      alt={t.team.shortName}
+                      className="h-6 w-6"
+                    />
+                    {t.team.shortName}
+                  </td>
+                  <td className="px-3 py-1 text-center">{t.points}</td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>

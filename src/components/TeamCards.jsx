@@ -1,6 +1,6 @@
 import { TEAMS } from "../data/teams";
 
-const TeamCards = ({ onSelect }) => {
+const TeamCards = ({ onSelect, onHover }) => {
   return (
     <div className="flex flex-col justify-center gap-8 px-6 w-[50%] h-full">
       <h1 className="flex justify-center text-8xl font-bold">Premier League</h1>
@@ -11,7 +11,7 @@ const TeamCards = ({ onSelect }) => {
             key={t.id}
             onClick={() => onSelect(t.id)}
             onMouseEnter={() =>
-              onHover({ id: t.id, primaryColor: t.colors.primary })
+              onHover({ teamID: t.id, primaryColor: t.colors.primary })
             }
             onMouseLeave={() => onHover(null)}
             style={{ "--shadow-color": t.colors.primary }}
