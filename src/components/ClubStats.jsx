@@ -1,11 +1,11 @@
 const ClubStats = ({ wins, losses, draws, points, position, played }) => {
   const stats = [
     { label: "Position", value: position },
+    { label: "Points", value: points },
     { label: "Played", value: played },
     { label: "Wins", value: wins },
     { label: "Draws", value: draws },
     { label: "Losses", value: losses },
-    { label: "Points", value: points },
   ];
 
   return (
