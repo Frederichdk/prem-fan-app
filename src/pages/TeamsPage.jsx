@@ -3,11 +3,14 @@ import { useNavigate } from "react-router-dom";
 import TeamTable from "../components/TeamTable";
 import { useEffect, useState } from "react";
 import { getStandings } from "../api/getStandings";
+import AuthButtons from "../components/AuthButtons";
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function TeamsPage() {
   const navigate = useNavigate();
   const [row, setRow] = useState(null);
   const [hoverTeam, setHoverTeam] = useState(null);
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
 
   useEffect(() => {
     async function fetchStandings() {
@@ -17,18 +20,26 @@ export default function TeamsPage() {
     fetchStandings();
   }, []);
 
+  const handleClick = async (id) => {
+    if (!isAuthenticated) {
+      await loginWithRedirect({ appState: { returnTo: `#/club/${id}` } });
+      return;
+    }
+    navigate(`/club/${id}`);
+  };
+
   return (
     <>
-      <div className="flex flex-row h-full w-full justify-center items-center gap-24 ">
+      <div className="flex flex-row h-full w-full justify-center gap-24 ">
         {row ? (
           <TeamTable rows={row} hoverTeam={hoverTeam} />
         ) : (
           <div>Loading...</div>
         )}
-        <TeamCards
-          onSelect={(id) => navigate(`/club/${id}`)}
-          onHover={setHoverTeam}
-        />
+        <div className="flex flex-col">
+          <AuthButtons />
+          <TeamCards onSelect={handleClick} onHover={setHoverTeam} />
+        </div>
       </div>
     </>
   );
