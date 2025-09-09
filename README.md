@@ -1,12 +1,31 @@
-# React + Vite
+# Prem Fan App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, fan-focused web application for following your favorite Premier League clubs. Built with React, Vite, and Tailwind CSS, the app delivers an interactive experience with live club data, fixtures, results, news, and dynamic team theming.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- Club Selection – Pick your team and instantly switch the app’s theme, stats, and content.  
+- Dynamic Stats – View season standings, points, and performance.  
+- Latest News – Club-specific news updates, dynamically displayed.  
+- Fixtures & Results – Keep track of upcoming matches and past results.  
+- Custom Theming – Team colors and styles adapt throughout the app.  
+- Authentication (Auth0) – Secure login and persistent storage. 
+- Backend & Database – Planned integration with Node.js & SQLite. 
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Tech Stack
+
+- Frontend: React, Vite, Tailwind CSS  
+- Authentication: Auth0 
+- Backend (planned): Node.js  
+- Database (planned): SQLite
+
+---
+
+## Getting Started
+
+1. Clone the repo:
+  git clone https://github.com/Frederichdk/prem-fan-app.git
