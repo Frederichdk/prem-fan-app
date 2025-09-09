@@ -1,0 +1,12 @@
+import Database from "better-sqlite3";
+
+const db = new Database("app.db");
+
+db.exec(`
+  create table if not exists favourites (
+    user_id text primary key,
+    team_id integer not null
+  )
+`);
+
+export default db;
