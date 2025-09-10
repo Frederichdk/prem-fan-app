@@ -35,7 +35,7 @@ function ClubPage() {
   return (
     <>
       <div className="h-full w-full flex flex-col gap-10 pb-10">
-        <ClubHeader teamInfo={TEAMS[teamID]} />
+        <ClubHeader teamInfo={TEAMS[teamID]} teamID={teamID} />
         <div className="w-full h-full flex flex-row gap-10">
           {stats ? (
             <ClubStats

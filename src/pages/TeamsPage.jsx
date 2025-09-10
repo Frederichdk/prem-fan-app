@@ -1,7 +1,7 @@
 import TeamCards from "../components/TeamCards";
 import { useNavigate } from "react-router-dom";
 import TeamTable from "../components/TeamTable";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getStandings } from "../api/getStandings";
 import AuthButtons from "../components/AuthButtons";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -12,11 +12,15 @@ export default function TeamsPage() {
   const [row, setRow] = useState(null);
   const [hoverTeam, setHoverTeam] = useState(null);
   const { isAuthenticated, loginWithRedirect } = useAuth0();
+  const fetchRef = useRef(false);
 
   useFavouriteRedirect();
-  // finishing here for the day, in theory this should work I need to set favourit team using a button on each club page
 
   useEffect(() => {
+    if (fetchRef.current) {
+      return;
+    }
+    fetchRef.current = true;
     async function fetchStandings() {
       const data = await getStandings();
       setRow(data);
