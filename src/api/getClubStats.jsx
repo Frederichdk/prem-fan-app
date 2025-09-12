@@ -1,8 +1,8 @@
 import { getStandings } from "./getStandings";
 
 export async function getClubStats(teamID) {
-  const table = await getStandings();
-  const row = table.find((r) => r.team.id === teamID);
+  const standings = await getStandings();
+  const row = standings.table.find((r) => r.team.id === teamID);
 
   return {
     position: row.position,
