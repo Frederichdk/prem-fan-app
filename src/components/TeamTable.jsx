@@ -1,4 +1,5 @@
 const TeamTable = ({ rows = [], hoverTeam = null }) => {
+  if (!Array.isArray(rows) || rows.length === 0) return null;
   const top3 = rows.slice(0, 3);
   const rest = rows.slice(3);
   const first = top3[0];

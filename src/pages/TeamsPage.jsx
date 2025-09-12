@@ -10,6 +10,7 @@ import useFavouriteRedirect from "../hook/useFavouriteRedirect";
 export default function TeamsPage() {
   const navigate = useNavigate();
   const [row, setRow] = useState(null);
+  const [updatedAt, setUpdatedAt] = useState(null);
   const [hoverTeam, setHoverTeam] = useState(null);
   const { isAuthenticated, loginWithRedirect } = useAuth0();
   const fetchRef = useRef(false);
@@ -23,7 +24,8 @@ export default function TeamsPage() {
     fetchRef.current = true;
     async function fetchStandings() {
       const data = await getStandings();
-      setRow(data);
+      setRow(data.table);
+      setUpdatedAt(data.updatedAt);
     }
     fetchStandings();
   }, []);

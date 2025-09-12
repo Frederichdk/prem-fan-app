@@ -2,6 +2,7 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import favouritesRoutes from "./routes/favourites.js";
+import standingsRoutes from "./routes/standings.js";
 
 const app = express();
 
@@ -10,6 +11,8 @@ app.use(cors({ origin: ["http://localhost:3000", "http://localhost:5173"] }));
 app.use(express.json());
 
 app.use("/api/v1", favouritesRoutes);
+
+app.use("/api/v1", standingsRoutes);
 
 const PORT = process.env.PORT || 4000;
 
