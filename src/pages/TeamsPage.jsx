@@ -10,6 +10,7 @@ import useFavouriteRedirect from "../hook/useFavouriteRedirect";
 export default function TeamsPage() {
   const navigate = useNavigate();
   const [row, setRow] = useState(null);
+  //to show when last updated to know when to refresh not implemented yet
   const [updatedAt, setUpdatedAt] = useState(null);
   const [hoverTeam, setHoverTeam] = useState(null);
   const { isAuthenticated, loginWithRedirect } = useAuth0();

@@ -3,6 +3,7 @@ import express from "express";
 import cors from "cors";
 import favouritesRoutes from "./routes/favourites.js";
 import standingsRoutes from "./routes/standings.js";
+import newsRoutes from "./routes/news.js";
 
 const app = express();
 
@@ -13,6 +14,8 @@ app.use(express.json());
 app.use("/api/v1", favouritesRoutes);
 
 app.use("/api/v1", standingsRoutes);
+
+app.use("/api/v1", newsRoutes);
 
 const PORT = process.env.PORT || 4000;
 

@@ -17,4 +17,12 @@ db.exec(`
   )
 `);
 
+db.exec(`
+  create table if not exists news_cache (
+    team_id integer primary key,
+    payload     text not null,
+    updated_at  integer not null
+  )
+`);
+
 export default db;

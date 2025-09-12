@@ -16,6 +16,8 @@ function ClubPage() {
   const teamID = Number(id);
   const [stats, setStats] = useState(null);
   const [news, setNews] = useState(null);
+  //to show when last updated to know when to refresh not implemented yet
+  const [newsUpdate, setNewsUpdate] = useState(null);
   const [game, setGame] = useState(null);
   const fetched = useRef(false);
 
@@ -26,8 +28,10 @@ function ClubPage() {
     fetched.current = true;
 
     (async () => {
+      const newsData = await getClubNews(teamID);
       setStats(await getClubStats(teamID));
-      setNews(await getClubNews(teamID));
+      setNews(newsData.news);
+      setNewsUpdate(newsData.updatedAt);
       setGame(await getClubGames(teamID));
     })();
   }, [teamID]);
