@@ -3,20 +3,23 @@ import TeamsPage from "./pages/TeamsPage";
 import ClubPage from "./pages/ClubPage";
 import "./App.css";
 import ProtectedRoute from "./components/ProtectedRoute";
+import { StandingsProvider } from "./context/StandingsContext";
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<TeamsPage />} />
-      <Route
-        path="/club/:id"
-        element={
-          <ProtectedRoute>
-            <ClubPage />
-          </ProtectedRoute>
-        }
-      ></Route>
-    </Routes>
+    <StandingsProvider>
+      <Routes>
+        <Route path="/" element={<TeamsPage />} />
+        <Route
+          path="/club/:id"
+          element={
+            <ProtectedRoute>
+              <ClubPage />
+            </ProtectedRoute>
+          }
+        ></Route>
+      </Routes>
+    </StandingsProvider>
   );
 }
 

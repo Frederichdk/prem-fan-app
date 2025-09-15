@@ -6,10 +6,11 @@ import { getStandings } from "../api/getStandings";
 import AuthButtons from "../components/AuthButtons";
 import { useAuth0 } from "@auth0/auth0-react";
 import useFavouriteRedirect from "../hook/useFavouriteRedirect";
+import { useStandings } from "../context/StandingsContext";
 
 export default function TeamsPage() {
   const navigate = useNavigate();
-  const [row, setRow] = useState(null);
+  const { row, setRow } = useStandings();
   //to show when last updated to know when to refresh not implemented yet
   const [updatedAt, setUpdatedAt] = useState(null);
   const [hoverTeam, setHoverTeam] = useState(null);

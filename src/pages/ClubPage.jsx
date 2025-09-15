@@ -49,7 +49,6 @@ function ClubPage() {
               draws={stats.draws}
               points={stats.points}
               position={stats.position}
-              id={TEAMS[teamID]}
             />
           ) : (
             <div>LOADING...</div>
