@@ -29,9 +29,9 @@ function ClubPage() {
 
     (async () => {
       const newsData = await getClubNews(teamID);
-      setStats(await getClubStats(teamID));
       setNews(newsData.news);
       setNewsUpdate(newsData.updatedAt);
+      setStats(await getClubStats(teamID));
       setGame(await getClubGames(teamID));
     })();
   }, [teamID]);
