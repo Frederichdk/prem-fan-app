@@ -1,9 +1,19 @@
 import { RiHome3Line } from "react-icons/ri";
 import FavouriteButton from "./FavouriteButton";
 import { useNavigate } from "react-router-dom";
+import { TbRefresh } from "react-icons/tb";
+import { refreshClubNews } from "../api/getClubNews";
+import { useNews } from "../context/NewsContext";
 
-const ClubHeader = ({ teamInfo: { name, crest }, teamID }) => {
+const ClubHeader = ({ teamInfo: { name, crest }, teamId }) => {
   const navigate = useNavigate();
+  const { setNews } = useNews();
+
+  const onClick = async () => {
+    const freshNews = await refreshClubNews(teamId);
+    setNews(freshNews.news);
+  };
+
   return (
     <div className="w-full bg-f-white p-3 rounded-2xl shadow-lg">
       <div className="flex justify-between border-[3px] border-f-isabelline rounded-xl p-7">
@@ -18,7 +28,12 @@ const ClubHeader = ({ teamInfo: { name, crest }, teamID }) => {
           </h1>
         </div>
         <div className="flex gap-10 items-center">
-          <FavouriteButton teamId={teamID} />
+          <TbRefresh
+            size={42}
+            className="hover:-rotate-180 transition-transform duration-700"
+            onClick={onClick}
+          />
+          <FavouriteButton teamId={teamId} />
           <RiHome3Line
             size={42}
             className="hover:scale-120 hover:-translate-y-1 transition-transform duration-2s"

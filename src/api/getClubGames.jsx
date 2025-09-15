@@ -10,3 +10,11 @@ export async function getClubGames(teamId) {
     updatedAt: data.updatedAt,
   };
 }
+
+export async function refreshClubGames(teamId) {
+  const res = await fetch(
+    `${import.meta.env.VITE_API_URL}/games/${teamId}/refresh`,
+    { method: "POST" }
+  );
+  return res.json();
+}

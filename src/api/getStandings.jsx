@@ -9,5 +9,6 @@ export async function refreshStandings() {
   const res = await fetch(`${import.meta.env.VITE_API_URL}/standings/refresh`, {
     method: "POST",
   });
+  console.log("Standings Refreshed");
   return res.json();
 }

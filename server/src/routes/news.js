@@ -58,9 +58,8 @@ router.get("/news/:teamId", async (req, res) => {
 });
 
 router.post("/news/:teamId/refresh", async (req, res) => {
-  const { teamId } = req.params;
-  //a different way of doing this just good to know
-  res.json(await refreshNews(Number(teamId)));
+  const teamId = Number(req.params.teamId);
+  res.json(await refreshNews(teamId));
 });
 
 export default router;
