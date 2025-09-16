@@ -5,37 +5,36 @@ import ClubNews from "../components/ClubNews";
 import { getClubNews } from "../api/getClubNews";
 import { getClubStats } from "../api/getClubStats";
 import { getClubGames } from "../api/getClubGames";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { TEAMS } from "../data/teams";
 import { useParams } from "react-router-dom";
 import { useTeamTheme } from "../utility/useTeamTheme";
 import "../App.css";
+import { useNews } from "../context/NewsContext";
+import { useGames } from "../context/GamesContext";
 
 function ClubPage() {
   const { id } = useParams();
-  const teamID = Number(id);
+  const teamId = Number(id);
   const [stats, setStats] = useState(null);
-  const [news, setNews] = useState(null);
-  const [game, setGame] = useState(null);
-  const fetched = useRef(false);
+  const { news, setNews } = useNews();
+  const { game, setGame } = useGames();
 
-  useTeamTheme(teamID);
+  useTeamTheme(teamId);
 
   useEffect(() => {
-    if (fetched.current) return;
-    fetched.current = true;
-
     (async () => {
-      setStats(await getClubStats(teamID));
-      setNews(await getClubNews(teamID));
-      setGame(await getClubGames(teamID));
+      const newsData = await getClubNews(teamId);
+      setNews(newsData.news);
+      setStats(await getClubStats(teamId));
+      setGame(await getClubGames(teamId));
     })();
-  }, [teamID]);
+  }, [teamId]);
 
   return (
     <>
       <div className="h-full w-full flex flex-col gap-10 pb-10">
-        <ClubHeader teamInfo={TEAMS[teamID]} teamID={teamID} />
+        <ClubHeader teamInfo={TEAMS[teamId]} teamId={teamId} />
         <div className="w-full h-full flex flex-row gap-10">
           {stats ? (
             <ClubStats
@@ -45,7 +44,6 @@ function ClubPage() {
               draws={stats.draws}
               points={stats.points}
               position={stats.position}
-              id={TEAMS[teamID]}
             />
           ) : (
             <div>LOADING...</div>

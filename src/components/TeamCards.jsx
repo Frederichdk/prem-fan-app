@@ -11,7 +11,7 @@ const TeamCards = ({ onSelect, onHover }) => {
             key={t.id}
             onClick={() => onSelect(t.id)}
             onMouseEnter={() =>
-              onHover({ teamID: t.id, primaryColor: t.colors.primary })
+              onHover({ teamId: t.id, primaryColor: t.colors.primary })
             }
             onMouseLeave={() => onHover(null)}
             style={{ "--shadow-color": t.colors.primary }}

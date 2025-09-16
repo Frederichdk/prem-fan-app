@@ -1,22 +1,15 @@
-import { TEAMS } from "../data/teams";
+export async function getClubNews(teamId) {
+  const result = await fetch(`${import.meta.env.VITE_API_URL}/news/${teamId}`);
+  const data = await result.json();
+  // console.log(data.news, data.updatedAt);
+  return { news: data.news, updatedAt: data.updatedAt };
+}
 
-export async function getClubNews(teamID) {
-  const guardianTagId = TEAMS[teamID].guardianTagId;
+export async function refreshClubNews(teamId) {
   const res = await fetch(
-    `https://content.guardianapis.com/search?tag=${encodeURIComponent(
-      guardianTagId
-    )}&order-by=newest&page-size=2&api-key=${import.meta.env.VITE_TG_KEY}`
+    `${import.meta.env.VITE_API_URL}/news/${teamId}/refresh`,
+    { method: "POST" }
   );
-
-  const data = await res.json();
-
-  const news = data.response.results.map((e) => ({
-    key: e.webTitle,
-    title: e.webTitle,
-    source: "The Gardian",
-    publishedAt: e.webPublicationDate,
-    url: e.webUrl,
-  }));
-
-  return news;
+  console.log("Club News refreshed");
+  return res.json();
 }

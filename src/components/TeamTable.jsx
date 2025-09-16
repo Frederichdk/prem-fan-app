@@ -1,4 +1,5 @@
 const TeamTable = ({ rows = [], hoverTeam = null }) => {
+  if (!Array.isArray(rows) || rows.length === 0) return null;
   const top3 = rows.slice(0, 3);
   const rest = rows.slice(3);
   const first = top3[0];
@@ -17,7 +18,7 @@ const TeamTable = ({ rows = [], hoverTeam = null }) => {
                 src={second.team.crest}
                 alt="Crest"
                 style={
-                  hoverTeam && hoverTeam.teamID === second.team.id
+                  hoverTeam && hoverTeam.teamId === second.team.id
                     ? { transform: "scale(1.2)", transition: "transform 0.8s" }
                     : { transition: "transform 0.8ss" }
                 }
@@ -41,7 +42,7 @@ const TeamTable = ({ rows = [], hoverTeam = null }) => {
                 src={first.team.crest}
                 alt="Crest"
                 style={
-                  hoverTeam && hoverTeam.teamID === first.team.id
+                  hoverTeam && hoverTeam.teamId === first.team.id
                     ? { transform: "scale(1.2)", transition: "transform 0.8s" }
                     : { transition: "transform 0.8s" }
                 }
@@ -65,7 +66,7 @@ const TeamTable = ({ rows = [], hoverTeam = null }) => {
                 src={third.team.crest}
                 alt="Crest"
                 style={
-                  hoverTeam && hoverTeam.teamID === third.team.id
+                  hoverTeam && hoverTeam.teamId === third.team.id
                     ? { transform: "scale(1.2)", transition: "transform 0.8s" }
                     : { transition: "transform 0.8ss" }
                 }
@@ -95,7 +96,7 @@ const TeamTable = ({ rows = [], hoverTeam = null }) => {
           <tbody className="divide-y divide-gray-100">
             {rest.map((t) => {
               const isActive = hoverTeam
-                ? hoverTeam.teamID === t.team.id
+                ? hoverTeam.teamId === t.team.id
                 : false;
               return (
                 <tr

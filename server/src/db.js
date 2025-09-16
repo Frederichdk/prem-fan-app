@@ -9,4 +9,28 @@ db.exec(`
   )
 `);
 
+db.exec(`
+  create table if not exists standings_cache (
+    competition text primary key,
+    payload     text not null,
+    updated_at  integer not null
+  )
+`);
+
+db.exec(`
+  create table if not exists news_cache (
+    team_id integer primary key,
+    payload     text not null,
+    updated_at  integer not null
+  )
+`);
+
+db.exec(`
+  create table if not exists games_cache (
+    team_id integer primary key,
+    payload     text not null,
+    updated_at  integer not null
+  )
+`);
+
 export default db;
