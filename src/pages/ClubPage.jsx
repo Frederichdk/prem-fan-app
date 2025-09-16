@@ -11,14 +11,14 @@ import { useParams } from "react-router-dom";
 import { useTeamTheme } from "../utility/useTeamTheme";
 import "../App.css";
 import { useNews } from "../context/NewsContext";
+import { useGames } from "../context/GamesContext";
 
 function ClubPage() {
   const { id } = useParams();
   const teamId = Number(id);
   const [stats, setStats] = useState(null);
   const { news, setNews } = useNews();
-  //to show when last updated to know when to refresh not implemented yet
-  const [game, setGame] = useState(null);
+  const { game, setGame } = useGames();
 
   useTeamTheme(teamId);
 

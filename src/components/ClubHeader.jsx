@@ -4,14 +4,19 @@ import { useNavigate } from "react-router-dom";
 import { TbRefresh } from "react-icons/tb";
 import { refreshClubNews } from "../api/getClubNews";
 import { useNews } from "../context/NewsContext";
+import { refreshClubGames } from "../api/getClubGames";
+import { useGames } from "../context/GamesContext";
 
 const ClubHeader = ({ teamInfo: { name, crest }, teamId }) => {
   const navigate = useNavigate();
   const { setNews } = useNews();
+  const { setGame } = useGames();
 
   const onClick = async () => {
     const freshNews = await refreshClubNews(teamId);
+    const freshGames = await refreshClubGames(teamId);
     setNews(freshNews.news);
+    setGame(freshGames);
   };
 
   return (
