@@ -10,7 +10,7 @@ const FavouriteButton = ({ teamId }) => {
     if (!user?.sub) return;
     const load = async () => {
       const res = await fetch(
-        `${import.meta.env.VITE_API_URL}/favourites/${encodeURIComponent(
+        `${import.meta.env.VITE_API_URL}/api/v1/favourites/${encodeURIComponent(
           user.sub
         )}`
       );
@@ -23,14 +23,14 @@ const FavouriteButton = ({ teamId }) => {
 
   const onClick = async () => {
     if (!isFavourite) {
-      await fetch(`${import.meta.env.VITE_API_URL}/favourites`, {
+      await fetch(`${import.meta.env.VITE_API_URL}/api/v1/favourites`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userId: user.sub, teamId }),
       });
       setIsFavourite(true);
     } else {
-      await fetch(`${import.meta.env.VITE_API_URL}/favourites`, {
+      await fetch(`${import.meta.env.VITE_API_URL}/api/v1/favourites`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userId: user.sub, teamId }),

@@ -1,14 +1,19 @@
 export async function getStandings() {
-  const result = await fetch(`${import.meta.env.VITE_API_URL}/standings`);
+  const result = await fetch(
+    `${import.meta.env.VITE_API_URL}/api/v1/standings`
+  );
   const data = await result.json();
 
   return { table: data.table, updatedAt: data.updatedAt };
 }
 
 export async function refreshStandings() {
-  const res = await fetch(`${import.meta.env.VITE_API_URL}/standings/refresh`, {
-    method: "POST",
-  });
+  const res = await fetch(
+    `${import.meta.env.VITE_API_URL}/api/v1/standings/refresh`,
+    {
+      method: "POST",
+    }
+  );
   console.log("Standings Refreshed");
   return res.json();
 }

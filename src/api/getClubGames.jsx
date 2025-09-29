@@ -1,6 +1,6 @@
 export async function getClubGames(teamId) {
   const response = await fetch(
-    `${import.meta.env.VITE_API_URL}/games/${teamId}`
+    `${import.meta.env.VITE_API_URL}/api/v1/games/${teamId}`
   );
   const data = await response.json();
   // console.log(data.nextMatch, data.recentResults, data.updatedAt);
