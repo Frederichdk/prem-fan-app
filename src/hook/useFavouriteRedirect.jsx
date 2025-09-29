@@ -15,7 +15,7 @@ export default function useFavouriteRedirect() {
 
     const checkFavorite = async () => {
       const res = await fetch(
-        `${import.meta.env.VITE_API_URL}/favourites/${encodeURIComponent(
+        `${import.meta.env.VITE_API_URL}/api/v1/favourites/${encodeURIComponent(
           user.sub
         )}`
       );
