@@ -13,7 +13,7 @@ export async function getClubGames(teamId) {
 
 export async function refreshClubGames(teamId) {
   const res = await fetch(
-    `${import.meta.env.VITE_API_URL}/games/${teamId}/refresh`,
+    `${import.meta.env.VITE_API_URL}/api/v1/games/${teamId}/refresh`,
     { method: "POST" }
   );
   console.log("Games refreshed");

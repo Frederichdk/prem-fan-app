@@ -14,11 +14,15 @@ app.use(
       "http://localhost:3000",
       "http://127.0.0.1:3000",
       "http://localhost:5173",
+      "http://localhost:8080",
+      "https://frontend-757476437737.us-east1.run.app",
     ],
   })
 );
 
 app.use(express.json());
+
+app.get("/health", (_req, res) => res.status(200).send("ok"));
 
 app.use("/api/v1", favouritesRoutes);
 

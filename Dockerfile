@@ -1,0 +1,13 @@
+FROM node:lts-alpine
+
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+
+EXPOSE 8080
+ENV PORT=8080
+
+# Use your start script: serve -s dist -l $PORT
+CMD ["npm", "start"]
