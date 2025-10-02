@@ -1,7 +1,10 @@
 import Database from "better-sqlite3";
 
-const isCloudRun = Boolean(process.env.K_SERVICE); // set automatically in Cloud Run
-const DB_PATH = isCloudRun ? "/tmp/app.db" : "app.db";
+const isCloudRun = !!process.env.K_SERVICE;
+const DB_PATH = isCloudRun
+  ? "/tmp/app.db"
+  : process.env.SQLITE_FILE || "app.db";
+console.log("DB_PATH:", DB_PATH);
 
 const db = new Database(DB_PATH);
 

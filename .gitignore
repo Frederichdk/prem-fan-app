@@ -18,10 +18,10 @@ dist-ssr
 # Local env files
 *.local
 .env
+.env.*
 .env.local
 
 server/.env
-server/app.db
 
 # SQLite database (backend)
 server/app.db

@@ -32,8 +32,8 @@ app.use("/api/v1", newsRoutes);
 
 app.use("/api/v1", gamesRoutes);
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 8080;
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`API listening on http://localhost:${PORT}`);
 });
