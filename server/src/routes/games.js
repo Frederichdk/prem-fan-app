@@ -1,5 +1,5 @@
 import { Router } from "express";
-import db from "../db.js";
+import { qGet, qRun } from "../db.js";
 
 const router = Router();
 
@@ -102,14 +102,15 @@ async function refreshGames(teamId) {
   );
   const data = await response.json();
 
-  db.prepare(
+  await qRun(
     `
     insert into games_cache (team_id, payload, updated_at) 
     values (?, ?, strftime('%s','now'))
     on conflict (team_id) do update 
     set payload = excluded.payload, updated_at = excluded.updated_at
-    `
-  ).run(teamId, JSON.stringify(data));
+    `,
+    [teamId, JSON.stringify(data)]
+  );
 
   return {
     ...formatPayload(teamId, data),
@@ -120,9 +121,10 @@ async function refreshGames(teamId) {
 router.get("/games/:teamId", async (req, res) => {
   const teamId = Number(req.params.teamId);
 
-  const row = db
-    .prepare(`select payload, updated_at from games_cache where team_id = ?`)
-    .get(teamId);
+  const row = await qGet(
+    `select payload, updated_at from games_cache where team_id = ?`,
+    [teamId]
+  );
   if (row) {
     const data = JSON.parse(row.payload);
     return res.json({
