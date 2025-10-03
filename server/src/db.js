@@ -1,42 +1,58 @@
-import Database from "better-sqlite3";
+import { createClient } from "@libsql/client";
 
-const isCloudRun = !!process.env.K_SERVICE;
-const DB_PATH = isCloudRun
-  ? "/tmp/app.db"
-  : process.env.SQLITE_FILE || "app.db";
-console.log("DB_PATH:", DB_PATH);
+const { TURSO_DATABASE_URL, TURSO_AUTH_TOKEN } = process.env;
+if (!TURSO_DATABASE_URL || !TURSO_AUTH_TOKEN) {
+  throw new Error("Missing TURSO_DATABASE_URL or TURSO_AUTH_TOKEN");
+}
 
-const db = new Database(DB_PATH);
+export const db = createClient({
+  url: TURSO_DATABASE_URL,
+  authToken: TURSO_AUTH_TOKEN,
+});
 
-db.exec(`
-  create table if not exists favourites (
-    user_id text primary key,
-    team_id integer not null
-  )
-`);
+export const qAll = async (sql, args = []) =>
+  (await db.execute({ sql, args })).rows;
 
-db.exec(`
-  create table if not exists standings_cache (
-    competition text primary key,
-    payload     text not null,
-    updated_at  integer not null
-  )
-`);
+export const qGet = async (sql, args = []) =>
+  (await db.execute({ sql, args })).rows[0] ?? null;
 
-db.exec(`
-  create table if not exists news_cache (
-    team_id integer primary key,
-    payload     text not null,
-    updated_at  integer not null
-  )
-`);
+export const qRun = async (sql, args = []) => {
+  await db.execute({ sql, args });
+};
 
-db.exec(`
-  create table if not exists games_cache (
-    team_id integer primary key,
-    payload     text not null,
-    updated_at  integer not null
-  )
-`);
+export async function initDb() {
+  // favourites
+  await qRun(`
+    CREATE TABLE IF NOT EXISTS favourites (
+      user_id   TEXT PRIMARY KEY,
+      team_id   INTEGER NOT NULL
+    )
+  `);
 
-export default db;
+  // standings_cache
+  await qRun(`
+    CREATE TABLE IF NOT EXISTS standings_cache (
+      competition TEXT PRIMARY KEY,
+      payload     TEXT NOT NULL,
+      updated_at  INTEGER NOT NULL
+    )
+  `);
+
+  // news_cache
+  await qRun(`
+    CREATE TABLE IF NOT EXISTS news_cache (
+      team_id     INTEGER PRIMARY KEY,
+      payload     TEXT NOT NULL,
+      updated_at  INTEGER NOT NULL
+    )
+  `);
+
+  // games_cache
+  await qRun(`
+    CREATE TABLE IF NOT EXISTS games_cache (
+      team_id     INTEGER PRIMARY KEY,
+      payload     TEXT NOT NULL,
+      updated_at  INTEGER NOT NULL
+    )
+  `);
+}

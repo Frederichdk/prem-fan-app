@@ -1,5 +1,5 @@
 import { Router } from "express";
-import db from "../db.js";
+import { qRun, qGet } from "../db.js";
 import { TEAMS } from "../data/teams.js";
 
 const router = Router();
@@ -14,12 +14,13 @@ async function refreshNews(teamIdRaw) {
   );
   const data = await result.json();
 
-  db.prepare(
+  await qRun(
     `insert into news_cache (team_id, payload, updated_at) 
     values (?, ?, strftime('%s','now')) 
     on conflict (team_id) do update 
-    set payload = excluded.payload, updated_at = excluded.updated_at`
-  ).run(Number(teamId), JSON.stringify(data));
+    set payload = excluded.payload, updated_at = excluded.updated_at`,
+    [Number(teamId), JSON.stringify(data)]
+  );
 
   const news = data.response.results.map((e) => ({
     key: e.webTitle,
@@ -37,9 +38,10 @@ async function refreshNews(teamIdRaw) {
 
 router.get("/news/:teamId", async (req, res) => {
   const teamId = Number(req.params.teamId);
-  const row = db
-    .prepare(`select payload, updated_at from news_cache where team_id = ?`)
-    .get(teamId);
+  const row = await qGet(
+    `select payload, updated_at from news_cache where team_id = ?`,
+    [teamId]
+  );
 
   if (row) {
     const data = JSON.parse(row.payload);

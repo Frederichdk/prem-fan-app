@@ -5,8 +5,11 @@ import favouritesRoutes from "./routes/favourites.js";
 import standingsRoutes from "./routes/standings.js";
 import newsRoutes from "./routes/news.js";
 import gamesRoutes from "./routes/games.js";
+import { initDb } from "./db.js";
 
 const app = express();
+
+await initDb();
 
 app.use(
   cors({
