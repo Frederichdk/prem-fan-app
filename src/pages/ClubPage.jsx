@@ -46,6 +46,7 @@ function ClubPage() {
               position={stats.position}
             />
           ) : (
+            //Once again I plan on handling this better at some point maybe not idk
             <div>LOADING...</div>
           )}
           <div className="w-full h-full flex flex-col gap-10">

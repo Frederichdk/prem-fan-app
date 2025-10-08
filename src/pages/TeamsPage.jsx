@@ -46,6 +46,7 @@ export default function TeamsPage() {
         {row ? (
           <TeamTable rows={row} hoverTeam={hoverTeam} />
         ) : (
+          //I plan on handling this better at some point
           <div>Loading...</div>
         )}
         <div className="flex flex-col">
